@@ -1,0 +1,156 @@
+<mat-toolbar
+  class="navbar"
+  [class.scrolled]="scrolled"
+  [class.mobile-open]="mobileMenuOpen"
+  role="navigation"
+  aria-label="Main navigation"
+>
+  <div class="nav-container">
+    <a routerLink="/" class="logo" (click)="closeMobileMenu()" aria-label="Home">
+      <mat-icon class="logo-icon" aria-hidden="true">school</mat-icon>
+      <span class="logo-text">EduLearn</span>
+    </a>
+
+    <div class="spacer"></div>
+
+    <div class="nav-links">
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact:true}"
+        mat-button
+        class="nav-link"
+      >Home</a>
+      <a
+        routerLink="/courses"
+        routerLinkActive="active"
+        mat-button
+        class="nav-link"
+      >Courses</a>
+      <a
+        routerLink="/dashboard"
+        routerLinkActive="active"
+        mat-button
+        class="nav-link"
+      >Dashboard</a>
+      <a
+        routerLink="/contact"
+        routerLinkActive="active"
+        mat-button
+        class="nav-link"
+      >Contact</a>
+    </div>
+
+    <div class="nav-actions">
+      <ng-container *ngIf="!isLoggedIn && router.url !== '/login'">
+        <a routerLink="/login" mat-button class="btn-login">
+          <mat-icon aria-hidden="true">login</mat-icon>
+          <span>Log In</span>
+        </a>
+        <a routerLink="/register" mat-raised-button class="btn-register">
+          <mat-icon aria-hidden="true">rocket_launch</mat-icon>
+          <span>Get Started</span>
+        </a>
+      </ng-container>
+
+      <div class="user-section" *ngIf="isLoggedIn">
+        <button class="user-btn" (click)="toggleMobileMenu()" aria-label="User menu">
+          <span class="user-avatar">{{ userInitials }}</span>
+          <span class="user-name">{{ currentUser?.name }}</span>
+          <mat-icon class="dropdown-icon" aria-hidden="true">expand_more</mat-icon>
+        </button>
+        <button mat-stroked-button class="btn-logout" (click)="onLogout()">
+          <mat-icon aria-hidden="true">logout</mat-icon>
+          <span>Logout</span>
+        </button>
+      </div>
+    </div>
+
+    <button
+      mat-icon-button
+      class="btn-mobile-toggle"
+      (click)="toggleMobileMenu()"
+      [attr.aria-label]="mobileMenuOpen ? 'Close menu' : 'Open menu'"
+      [attr.aria-expanded]="mobileMenuOpen"
+    >
+      <mat-icon aria-hidden="true">{{ mobileMenuOpen ? 'close' : 'menu' }}</mat-icon>
+    </button>
+  </div>
+
+  <div class="mobile-menu" [class.open]="mobileMenuOpen" aria-label="Mobile navigation">
+    <a
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact:true}"
+      (click)="closeMobileMenu()"
+      mat-button
+      class="mobile-link"
+    >
+      <mat-icon aria-hidden="true">home</mat-icon>
+      <span>Home</span>
+    </a>
+    <a
+      routerLink="/courses"
+      routerLinkActive="active"
+      (click)="closeMobileMenu()"
+      mat-button
+      class="mobile-link"
+    >
+      <mat-icon aria-hidden="true">school</mat-icon>
+      <span>Courses</span>
+    </a>
+    <a
+      routerLink="/dashboard"
+      routerLinkActive="active"
+      (click)="closeMobileMenu()"
+      mat-button
+      class="mobile-link"
+    >
+      <mat-icon aria-hidden="true">dashboard</mat-icon>
+      <span>Dashboard</span>
+    </a>
+    <a
+      routerLink="/contact"
+      routerLinkActive="active"
+      (click)="closeMobileMenu()"
+      mat-button
+      class="mobile-link"
+    >
+      <mat-icon aria-hidden="true">contact_mail</mat-icon>
+      <span>Contact</span>
+    </a>
+
+    <div class="mobile-divider"></div>
+
+    <ng-container *ngIf="!isLoggedIn && router.url !== '/login'">
+      <div class="mobile-actions">
+        <a routerLink="/login" (click)="closeMobileMenu()" mat-stroked-button class="mobile-btn mobile-btn-login">
+          <mat-icon aria-hidden="true">login</mat-icon>
+          <span>Log In</span>
+        </a>
+        <a routerLink="/register" (click)="closeMobileMenu()" mat-raised-button class="mobile-btn mobile-btn-register">
+          <mat-icon aria-hidden="true">rocket_launch</mat-icon>
+          <span>Get Started</span>
+        </a>
+      </div>
+    </ng-container>
+
+    <div class="mobile-user" *ngIf="isLoggedIn">
+      <div class="mobile-user-header">
+        <span class="mobile-user-avatar">{{ userInitials }}</span>
+        <div class="mobile-user-info">
+          <span class="mobile-user-name">{{ currentUser?.name }}</span>
+          <span class="mobile-user-email" *ngIf="currentUser?.email">{{ currentUser?.email }}</span>
+        </div>
+      </div>
+      <a routerLink="/dashboard" (click)="closeMobileMenu()" mat-button class="mobile-link">
+        <mat-icon aria-hidden="true">dashboard</mat-icon>
+        <span>My Dashboard</span>
+      </a>
+      <button mat-button class="mobile-link mobile-link-logout" (click)="onLogout()">
+        <mat-icon aria-hidden="true">logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </div>
+  </div>
+</mat-toolbar>

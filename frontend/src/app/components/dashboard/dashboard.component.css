@@ -1,0 +1,345 @@
+.dashboard-page {
+  min-height: 100vh;
+  background: #f8fafc;
+  padding: 120px 0 60px;
+}
+
+/* ===== HEADER ===== */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.header-left h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.header-left p {
+  color: #64748b;
+  font-size: 1rem;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dashboard-header a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 24px !important;
+}
+
+/* ===== OVERALL PROGRESS ===== */
+.overall-progress-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 48px;
+}
+
+.progress-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.progress-info h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 20px;
+}
+
+.progress-circle {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.progress-circle svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.progress-circle .bg {
+  fill: none;
+  stroke: #e2e8f0;
+  stroke-width: 6;
+}
+
+.progress-circle .fg {
+  fill: none;
+  stroke: #6366f1;
+  stroke-width: 6;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s ease;
+}
+
+.progress-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #6366f1;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  flex: 1;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: #f8fafc;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--stat-color), color-mix(in srgb, var(--stat-color) 70%, white));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-icon mat-icon {
+  color: #fff;
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+.stat-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+/* ===== SECTION HEADING ===== */
+.section-heading {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 20px;
+}
+
+/* ===== ENROLLED COURSES ===== */
+.courses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.enrolled-course {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 20px 24px;
+  transition: all 0.3s ease;
+  gap: 20px;
+}
+
+.enrolled-course:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+}
+
+.course-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+}
+
+.course-thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.course-thumb mat-icon {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
+}
+
+.course-details {
+  flex: 1;
+}
+
+.course-details h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 2px;
+}
+
+.course-instructor {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-bottom: 10px;
+}
+
+.course-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.progress-bar {
+  flex: 1;
+  max-width: 200px;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.8s ease;
+}
+
+.progress-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.course-action {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.course-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 700;
+  color: #f59e0b;
+  font-size: 0.9rem;
+}
+
+.course-rating mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+.course-action button {
+  font-size: 0.85rem !important;
+  padding: 4px 20px !important;
+}
+
+/* ===== EMPTY STATE ===== */
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.empty-state mat-icon {
+  font-size: 72px;
+  width: 72px;
+  height: 72px;
+  color: #94a3b8;
+  margin-bottom: 16px;
+}
+
+.empty-state h3 {
+  font-size: 1.4rem;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.empty-state p {
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .dashboard-page {
+    padding: 100px 0 40px;
+  }
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .overall-progress-card {
+    flex-direction: column;
+    padding: 24px;
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+  }
+  .enrolled-course {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .course-action {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .course-info {
+    width: 100%;
+  }
+  .header-left h1 {
+    font-size: 1.6rem;
+  }
+}

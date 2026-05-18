@@ -1,0 +1,50 @@
+<div class="messages-page">
+  <div class="messages-header">
+    <div class="container">
+      <h1>My Messages</h1>
+      <p>All the messages you have sent through the contact form</p>
+    </div>
+  </div>
+
+  <div class="container messages-body">
+    <div class="messages-toolbar">
+      <span class="messages-count">{{ messages.length }} message{{ messages.length !== 1 ? 's' : '' }}</span>
+      <a mat-stroked-button routerLink="/contact" class="new-msg-btn">
+        <mat-icon>add</mat-icon> New Message
+      </a>
+    </div>
+
+    <div class="messages-list" *ngIf="messages.length > 0">
+      <mat-card class="message-card" *ngFor="let msg of messages">
+        <div class="message-header">
+          <div class="message-sender">
+            <div class="sender-avatar">{{ msg.name.charAt(0) }}</div>
+            <div>
+              <div class="sender-name">{{ msg.name }}</div>
+              <div class="sender-email">{{ msg.email }}</div>
+            </div>
+          </div>
+          <span class="message-date">{{ formatDate(msg.timestamp) }}</span>
+        </div>
+        <div class="message-subject" *ngIf="msg.subject">
+          <mat-icon>topic</mat-icon> {{ msg.subject }}
+        </div>
+        <p class="message-text">{{ msg.message }}</p>
+        <div class="message-actions">
+          <button mat-stroked-button color="warn" (click)="deleteMessage(msg.id)">
+            <mat-icon>delete</mat-icon> Delete
+          </button>
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="empty-state" *ngIf="messages.length === 0">
+      <mat-icon class="empty-icon">mail_outline</mat-icon>
+      <h3>No messages yet</h3>
+      <p>You haven't sent any messages. Use the contact form to get in touch.</p>
+      <a mat-raised-button color="primary" routerLink="/contact">
+        <mat-icon>send</mat-icon> Send a Message
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+<div class="auth-page">
+  <div class="auth-container">
+    <div class="auth-banner">
+      <div class="banner-content">
+        <mat-icon class="banner-icon">auto_stories</mat-icon>
+        <h2>Start Learning Today</h2>
+        <p>Join 50,000+ students and unlock your potential with expert-led courses.</p>
+        <div class="banner-features">
+          <div class="banner-feature">
+            <mat-icon>check_circle</mat-icon>
+            <span>200+ high quality courses</span>
+          </div>
+          <div class="banner-feature">
+            <mat-icon>check_circle</mat-icon>
+            <span>Learn at your own pace</span>
+          </div>
+          <div class="banner-feature">
+            <mat-icon>check_circle</mat-icon>
+            <span>Get certified</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="auth-card">
+      <div class="auth-header">
+        <div class="auth-logo">
+          <mat-icon>school</mat-icon>
+        </div>
+        <h1>Create Account</h1>
+        <p>Start your learning journey in minutes</p>
+      </div>
+
+      <form class="auth-form" (ngSubmit)="onSubmit()">
+        <div class="auth-error" *ngIf="error">
+          <mat-icon>error</mat-icon>
+          <span>{{ error }}</span>
+        </div>
+
+        <mat-form-field appearance="outline" class="auth-field">
+          <mat-label>Full name</mat-label>
+          <input matInput type="text" [(ngModel)]="name" name="name" placeholder="John Doe" required>
+          <mat-icon matPrefix>person</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="auth-field">
+          <mat-label>Email address</mat-label>
+          <input matInput type="email" [(ngModel)]="email" name="email" placeholder="you@example.com" required>
+          <mat-icon matPrefix>email</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="auth-field">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="hidePassword ? 'password' : 'text'" [(ngModel)]="password" name="password" placeholder="Create a password" required>
+          <mat-icon matPrefix>lock</mat-icon>
+          <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button">
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="auth-field">
+          <mat-label>Confirm password</mat-label>
+          <input matInput [type]="hideConfirm ? 'password' : 'text'" [(ngModel)]="confirmPassword" name="confirmPassword" placeholder="Repeat your password" required>
+          <mat-icon matPrefix>lock</mat-icon>
+          <button mat-icon-button matSuffix (click)="hideConfirm = !hideConfirm" type="button">
+            <mat-icon>{{ hideConfirm ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" class="auth-submit" type="submit" [disabled]="loading">
+          <mat-icon *ngIf="!loading">person_add</mat-icon>
+          <mat-spinner *ngIf="loading" diameter="20"></mat-spinner>
+          <span *ngIf="!loading">Create Account</span>
+        </button>
+
+        <p class="terms-text">
+          By signing up, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+        </p>
+      </form>
+
+      <div class="auth-footer">
+        Already have an account? <a routerLink="/login">Sign in</a>
+      </div>
+    </div>
+  </div>
+</div>

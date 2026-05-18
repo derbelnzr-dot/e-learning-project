@@ -1,0 +1,32 @@
+# Backend
+backend/target/
+backend/*.jar
+backend/*.log
+backend/.env
+backend/src/main/resources/application.properties
+!backend/src/main/resources/application-dev.properties
+
+# Frontend
+frontend/dist/
+frontend/node_modules/
+frontend/.angular/
+frontend/.env
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Large assets (videos, binaries)
+frontend/src/assets/*.mp4
+frontend/src/assets/*.mov
+frontend/src/assets/*.avi

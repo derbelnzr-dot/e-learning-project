@@ -1,0 +1,123 @@
+<div class="course-detail-page">
+  <!-- Header Section -->
+  <div class="course-header">
+    <div class="container header-content">
+      <div class="header-left">
+        <span class="badge">{{ course.category }}</span>
+        <h1>{{ course.title }}</h1>
+        <p class="instructor">Created by <strong>{{ course.instructor }}</strong></p>
+        <div class="meta-row">
+          <div class="rating">
+            <mat-icon *ngFor="let s of getStars(course.rating)" class="star">star</mat-icon>
+            <mat-icon class="star half">star_half</mat-icon>
+            <span class="rating-value">{{ course.rating }}</span>
+            <span class="rating-count">({{ course.students | number }} students)</span>
+          </div>
+          <span class="meta-item">
+            <mat-icon>schedule</mat-icon> {{ course.duration }}
+          </span>
+          <span class="meta-item">
+            <mat-icon>menu_book</mat-icon> {{ totalLectures }} lectures
+          </span>
+          <span class="meta-item">
+            <mat-icon>signal_cellular_alt</mat-icon> {{ course.level }}
+          </span>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="price-card">
+          <div class="price">{{ course.price | tndCurrency }}</div>
+          <button mat-flat-button color="primary" class="enroll-btn">
+            <mat-icon>shopping_cart</mat-icon> Enroll Now
+          </button>
+          <button mat-stroked-button class="wishlist-btn">
+            <mat-icon>favorite_border</mat-icon> Add to Wishlist
+          </button>
+          <p class="money-back">30-Day Money-Back Guarantee</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container course-body">
+    <div class="body-left">
+      <!-- Video Section -->
+      <div class="video-section">
+        <div class="video-placeholder">
+          <mat-icon class="play-icon">play_circle</mat-icon>
+          <span>Preview this course</span>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <section class="description-section">
+        <h2>Description</h2>
+        <p>{{ course.description }}</p>
+      </section>
+
+      <!-- Curriculum -->
+      <section class="curriculum-section">
+        <h2>Course Curriculum</h2>
+        <div class="curriculum-stats">
+          <span>{{ totalLectures }} lectures</span>
+          <span>{{ totalDuration }} total length</span>
+        </div>
+        <div class="chapters-list">
+          <div class="chapter" *ngFor="let chapter of course.chapters; let i = index">
+            <div class="chapter-header">
+              <div class="chapter-left">
+                <mat-icon class="expand-icon">play_arrow</mat-icon>
+                <span class="chapter-title">{{ chapter.title }}</span>
+              </div>
+              <div class="chapter-meta">
+                <span class="chapter-duration">{{ chapter.duration }}</span>
+                <span class="chapter-lectures">{{ chapter.lectures }} lectures</span>
+                <span class="free-badge" *ngIf="chapter.free">Free</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Instructor -->
+      <section class="instructor-section">
+        <h2>Instructor</h2>
+        <div class="instructor-card">
+          <div class="instructor-avatar">{{ course.instructor.charAt(0) }}</div>
+          <div class="instructor-info">
+            <h3>{{ course.instructor }}</h3>
+            <p>Senior Full-Stack Developer & Educator</p>
+            <p class="instructor-bio">With over 10 years of industry experience, Sarah has taught 50,000+ students worldwide. She specializes in Angular, React, and modern JavaScript frameworks.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="body-right">
+      <!-- Sticky Price Card (Mobile) -->
+      <div class="sticky-card">
+        <div class="price-card mobile-price">
+          <div class="price">{{ course.price | tndCurrency }}</div>
+          <button mat-flat-button color="primary" class="enroll-btn">
+            <mat-icon>shopping_cart</mat-icon> Enroll Now
+          </button>
+          <button mat-stroked-button class="wishlist-btn">
+            <mat-icon>favorite_border</mat-icon> Add to Wishlist
+          </button>
+          <p class="money-back">30-Day Money-Back Guarantee</p>
+        </div>
+
+        <div class="includes-card">
+          <h3>This course includes:</h3>
+          <ul>
+            <li><mat-icon>videocam</mat-icon> {{ totalDuration }} of video content</li>
+            <li><mat-icon>description</mat-icon> {{ totalLectures }} downloadable resources</li>
+            <li><mat-icon>smartphone</mat-icon> Mobile and TV access</li>
+            <li><mat-icon>verified</mat-icon> Certificate of completion</li>
+            <li><mat-icon>infinity</mat-icon> Full lifetime access</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

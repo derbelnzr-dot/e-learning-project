@@ -1,0 +1,96 @@
+<div class="dashboard-page">
+  <div class="container">
+    <!-- Header -->
+    <div class="dashboard-header">
+      <div class="header-left">
+        <h1>My Dashboard</h1>
+        <p>Track your learning progress and manage your courses</p>
+      </div>
+      <div class="header-actions">
+        <a mat-stroked-button routerLink="/messages">
+          <mat-icon>inbox</mat-icon> My Messages
+        </a>
+        <a mat-raised-button color="primary" routerLink="/courses">
+          <mat-icon>add</mat-icon> Browse Courses
+        </a>
+      </div>
+    </div>
+
+    <!-- Overall Progress -->
+    <div class="overall-progress-card">
+      <div class="progress-info">
+        <h2>Overall Progress</h2>
+        <div class="progress-circle">
+          <svg viewBox="0 0 100 100">
+            <circle class="bg" cx="50" cy="50" r="42" />
+            <circle
+              class="fg"
+              cx="50" cy="50" r="42"
+              [style.stroke-dasharray]="264"
+              [style.stroke-dashoffset]="264 - (264 * overallProgress / 100)"
+            />
+          </svg>
+          <div class="progress-value">{{ overallProgress }}%</div>
+        </div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card" *ngFor="let stat of stats" [style.--stat-color]="stat.color">
+          <div class="stat-icon">
+            <mat-icon>{{ stat.icon }}</mat-icon>
+          </div>
+          <div class="stat-details">
+            <span class="stat-value">{{ stat.value }}</span>
+            <span class="stat-label">{{ stat.label }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Enrolled Courses -->
+    <h2 class="section-heading">My Courses</h2>
+    <div class="courses-list">
+      <div class="enrolled-course" *ngFor="let course of enrolledCourses">
+        <div class="course-info">
+          <div class="course-thumb" [style.background]="
+            course.category === 'Development' ? 'linear-gradient(135deg, #6366f1, #4f46e5)' :
+            course.category === 'Data Science' ? 'linear-gradient(135deg, #f59e0b, #d97706)' :
+            course.category === 'Security' ? 'linear-gradient(135deg, #ef4444, #dc2626)' :
+            'linear-gradient(135deg, #10b981, #059669)'
+          ">
+            <mat-icon>school</mat-icon>
+          </div>
+          <div class="course-details">
+            <h3>{{ course.title }}</h3>
+            <p class="course-instructor">{{ course.instructor }}</p>
+            <div class="course-progress">
+              <div class="progress-bar">
+                <div
+                  class="progress-fill"
+                  [style.width.%]="course.progress"
+                  [style.background]="getProgressColor(course.progress)"
+                ></div>
+              </div>
+              <span class="progress-text" [style.color]="getProgressColor(course.progress)">
+                {{ course.progress }}% Complete
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="course-action">
+          <span class="course-rating">
+            <mat-icon>star</mat-icon> {{ course.rating }}
+          </span>
+          <button mat-stroked-button color="primary">Continue</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty state (hidden when courses exist) -->
+    <div class="empty-state" *ngIf="enrolledCourses.length === 0">
+      <mat-icon>school</mat-icon>
+      <h3>No courses enrolled yet</h3>
+      <p>Start your learning journey by enrolling in a course</p>
+      <a mat-raised-button color="primary" routerLink="/courses">Explore Courses</a>
+    </div>
+  </div>
+</div>

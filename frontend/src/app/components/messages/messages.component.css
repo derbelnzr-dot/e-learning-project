@@ -1,0 +1,164 @@
+.messages-page {
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+.messages-header {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #fff;
+  padding: 120px 0 60px;
+  text-align: center;
+}
+
+.messages-header h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.messages-header p {
+  color: #94a3b8;
+  font-size: 1.1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.messages-body {
+  padding: 32px 24px 80px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.messages-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.messages-count {
+  font-size: 0.95rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.new-msg-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.message-card {
+  border-radius: 16px !important;
+  border: 1px solid #e2e8f0;
+  padding: 20px 24px;
+}
+
+.message-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.message-sender {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sender-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.sender-name {
+  font-weight: 600;
+  color: #0f172a;
+  font-size: 0.95rem;
+}
+
+.sender-email {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.message-date {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.message-subject {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: #334155;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.message-subject mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  color: #6366f1;
+}
+
+.message-text {
+  color: #475569;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0 0 12px;
+}
+
+.message-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.empty-icon {
+  font-size: 64px;
+  width: 64px;
+  height: 64px;
+  color: #cbd5e1;
+  margin-bottom: 16px;
+}
+
+.empty-state h3 {
+  font-size: 1.3rem;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.empty-state p {
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+  .messages-header h1 {
+    font-size: 1.8rem;
+  }
+}

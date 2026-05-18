@@ -1,0 +1,12 @@
+target/
+*.class
+*.jar
+*.war
+*.log
+.idea/
+*.iml
+*.swp
+*.swo
+.vscode/
+**/application-local.properties
+**/application-dev.properties

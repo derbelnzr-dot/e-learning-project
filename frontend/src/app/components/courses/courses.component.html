@@ -1,0 +1,107 @@
+<div class="courses-page">
+  <!-- Header -->
+  <div class="courses-header">
+    <div class="container">
+      <h1>Explore Our Courses</h1>
+      <p>Find the perfect course to advance your skills and career</p>
+    </div>
+  </div>
+
+  <div class="container courses-body">
+    <!-- Search & Filters -->
+    <div class="filters-bar">
+      <div class="search-field">
+        <mat-icon class="search-icon">search</mat-icon>
+        <input
+          matInput
+          type="text"
+          placeholder="Search courses, instructors, categories..."
+          [(ngModel)]="searchQuery"
+          class="search-input"
+        >
+      </div>
+
+      <div class="filter-controls">
+        <div class="filter-select">
+          <mat-select [(value)]="selectedLevel" placeholder="Level">
+            <mat-option value="All">All Levels</mat-option>
+            <mat-option value="Beginner">Beginner</mat-option>
+            <mat-option value="Intermediate">Intermediate</mat-option>
+            <mat-option value="Advanced">Advanced</mat-option>
+            <mat-option value="All Levels">All Levels</mat-option>
+          </mat-select>
+        </div>
+        <div class="filter-select">
+          <mat-select [(value)]="selectedSort" placeholder="Sort by">
+            <mat-option value="popular">Most Popular</mat-option>
+            <mat-option value="rating">Highest Rated</mat-option>
+            <mat-option value="price-low">Price: Low to High</mat-option>
+            <mat-option value="price-high">Price: High to Low</mat-option>
+            <mat-option value="newest">Newest</mat-option>
+          </mat-select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Chips -->
+    <div class="category-chips">
+      <button
+        class="chip"
+        *ngFor="let cat of categories"
+        [class.active]="selectedCategory === cat"
+        (click)="filterByCategory(cat)"
+      >
+        {{ cat }}
+      </button>
+    </div>
+
+    <!-- Results Count -->
+    <p class="results-count">{{ filteredCourses.length }} courses found</p>
+
+    <!-- Courses Grid -->
+    <div class="courses-grid" *ngIf="filteredCourses.length > 0">
+      <mat-card class="course-card" *ngFor="let course of filteredCourses">
+        <div class="course-image">
+          <div class="course-image-placeholder" [style.background]="
+            course.category === 'Development' ? 'linear-gradient(135deg, #6366f1, #4f46e5)' :
+            course.category === 'Data Science' ? 'linear-gradient(135deg, #f59e0b, #d97706)' :
+            course.category === 'Security' ? 'linear-gradient(135deg, #ef4444, #dc2626)' :
+            course.category === 'Design' ? 'linear-gradient(135deg, #ec4899, #db2777)' :
+            course.category === 'Marketing' ? 'linear-gradient(135deg, #10b981, #059669)' :
+            'linear-gradient(135deg, #8b5cf6, #7c3aed)'
+          ">
+            <mat-icon>school</mat-icon>
+          </div>
+          <span class="course-badge">{{ course.category }}</span>
+        </div>
+        <mat-card-content>
+          <h3 class="course-title">{{ course.title }}</h3>
+          <p class="course-instructor">{{ course.instructor }}</p>
+          <div class="course-rating">
+            <mat-icon *ngFor="let s of getStars(course.rating)" class="star">star</mat-icon>
+            <span class="rating-value">{{ course.rating }}</span>
+            <span class="rating-count">({{ course.students | number }})</span>
+          </div>
+          <div class="course-meta">
+            <span><mat-icon>schedule</mat-icon> {{ course.duration }}</span>
+            <span><mat-icon>signal_cellular_alt</mat-icon> {{ course.level }}</span>
+          </div>
+          <div class="course-footer">
+            <span class="course-price">{{ course.price | tndCurrency }}</span>
+            <a mat-stroked-button color="primary" routerLink="/course-detail">Details</a>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="filteredCourses.length === 0">
+      <mat-icon>search_off</mat-icon>
+      <h3>No courses found</h3>
+      <p>Try adjusting your search or filter criteria</p>
+      <button mat-stroked-button color="primary" (click)="searchQuery = ''; selectedCategory = 'All'; selectedLevel = 'All'">
+        Clear Filters
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+{
+  "name": "e-learning-platform",
+  "version": "1.0.0",
+  "description": "E-Learning Platform with Angular frontend and Spring Boot backend",
+  "private": true,
+  "scripts": {
+    "install:frontend": "cd frontend && npm install",
+    "install:backend": "cd backend && mvn install -DskipTests",
+    "install:all": "npm run install:frontend",
+    "start:frontend": "cd frontend && npm start",
+    "start:backend": "cd backend && mvn spring-boot:run",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && mvn clean package -DskipTests",
+    "build:all": "npm run build:frontend && npm run build:backend",
+    "test:frontend": "cd frontend && npm test",
+    "test:backend": "cd backend && mvn test"
+  }
+}
